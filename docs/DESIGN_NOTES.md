@@ -21,7 +21,7 @@ All four selected outputs are 15.041667-second, 406×720 H.264/AAC videos. They 
 
 The earlier 834×720 composites also baked the prompt cards and timeline into the video. This revision limits rasterized UI to the live-room HUD on the left and keeps the entire prompt console as HTML/CSS on the right. Chinese DOM text uses a 62 KB subset WenQuanYi webfont, so labels remain selectable, editable, resolution-independent, and much faster to load than the previous 3.9 MB font.
 
-The MP4s use a two-second GOP and front-loaded `moov` atoms. They total about 7.0 MB instead of 26.4 MB, and the largest case is 3.05 MB instead of 17.3 MB. `preload="none"` prevents the browser from consuming that media bandwidth before a visitor chooses to play.
+The MP4s use a two-second GOP, a 520 kbps VBV ceiling, 64 kbps AAC audio, and front-loaded `moov` atoms. They total about 4.1 MB instead of 26.4 MB, and the largest case is 1.10 MB instead of 17.3 MB. `preload="none"` prevents the browser from consuming that media bandwidth before a visitor chooses to play.
 
 The webpage console is generated from the selected case's own manifest. The red `模型 NOW` line stays at 72% of the usable lane width, matching the upstream compositor. Cards and ruler ticks use the same normalized scale as that renderer: one second equals `52 / 377` of the lane width. `requestVideoFrameCallback` supplies the presented frame's media time when the browser supports it; `video.currentTime` is the fallback.
 

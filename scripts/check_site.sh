@@ -13,14 +13,14 @@ required=(
   assets/fonts/LiveDirector-CJK-subset.LICENSE
   assets/audience/live-room-15s.json
   scripts/serve_site.py
-  assets/videos/elderly-speaker-live-v3.mp4
-  assets/videos/home-kitchen-live-v3.mp4
-  assets/videos/pottery-studio-live-v3.mp4
-  assets/videos/video-call-live-v3.mp4
-  assets/posters/elderly-speaker-live-v3.jpg
-  assets/posters/home-kitchen-live-v3.jpg
-  assets/posters/pottery-studio-live-v3.jpg
-  assets/posters/video-call-live-v3.jpg
+  assets/videos/elderly-speaker-live-v4.mp4
+  assets/videos/home-kitchen-live-v4.mp4
+  assets/videos/pottery-studio-live-v4.mp4
+  assets/videos/video-call-live-v4.mp4
+  assets/posters/elderly-speaker-live-v4.jpg
+  assets/posters/home-kitchen-live-v4.jpg
+  assets/posters/pottery-studio-live-v4.jpg
+  assets/posters/video-call-live-v4.jpg
   assets/manifests/elderly-speaker.json
   assets/manifests/home-kitchen.json
   assets/manifests/pottery-studio.json
@@ -43,7 +43,7 @@ for video in assets/videos/*.mp4; do
   audio=$(ffprobe -v error -select_streams a:0 \
     -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$video")
   case "$(basename "$video")" in
-    elderly-speaker-live-v3.mp4|home-kitchen-live-v3.mp4|pottery-studio-live-v3.mp4|video-call-live-v3.mp4) expected_size="406x720" ;;
+    elderly-speaker-live-v4.mp4|home-kitchen-live-v4.mp4|pottery-studio-live-v4.mp4|video-call-live-v4.mp4) expected_size="406x720" ;;
     *) echo "[error] unexpected video asset: $video" >&2; exit 3 ;;
   esac
   actual_size="${width}x${height}"
@@ -52,7 +52,7 @@ for video in assets/videos/*.mp4; do
     exit 3
   }
   [[ "$audio" == aac ]] || { echo "[error] unexpected audio codec: $video" >&2; exit 3; }
-  [[ $(stat -c %s "$video") -lt 3500000 ]] || { echo "[error] video exceeds the 3.5 MB delivery budget: $video" >&2; exit 3; }
+  [[ $(stat -c %s "$video") -lt 1200000 ]] || { echo "[error] video exceeds the 1.2 MB delivery budget: $video" >&2; exit 3; }
   ffmpeg -nostdin -xerror -v error -i "$video" -f null -
   moov_offset=$(LC_ALL=C grep -oba -m1 'moov' "$video" | cut -d: -f1)
   [[ -n "$moov_offset" && "$moov_offset" -lt 4096 ]] || { echo "[error] moov atom is not front-loaded: $video" >&2; exit 3; }

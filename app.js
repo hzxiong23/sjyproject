@@ -8,8 +8,8 @@ const CASES = [
     title: "The reveal",
     short: "Shock · emphasis · resolve",
     summary: "Surprise turns to delight as an emphatic two-hand gesture resolves into a composed close.",
-    video: "assets/videos/elderly-speaker-live-v3.mp4",
-    poster: "assets/posters/elderly-speaker-live-v3.jpg",
+    video: "assets/videos/elderly-speaker-live-v4.mp4",
+    poster: "assets/posters/elderly-speaker-live-v4.jpg",
     manifest: "assets/manifests/elderly-speaker.json"
   },
   {
@@ -19,8 +19,8 @@ const CASES = [
     title: "Kitchen notes",
     short: "Surprise · open palm · settle",
     summary: "A kitchen presenter moves from a held stance to an open-palm explanation, then returns to neutral.",
-    video: "assets/videos/home-kitchen-live-v3.mp4",
-    poster: "assets/posters/home-kitchen-live-v3.jpg",
+    video: "assets/videos/home-kitchen-live-v4.mp4",
+    poster: "assets/posters/home-kitchen-live-v4.jpg",
     manifest: "assets/manifests/home-kitchen.json"
   },
   {
@@ -30,8 +30,8 @@ const CASES = [
     title: "Craft in motion",
     short: "Welcome · point · return",
     summary: "A warm studio introduction shifts into focused direction and closes with both hands grounded on the table.",
-    video: "assets/videos/pottery-studio-live-v3.mp4",
-    poster: "assets/posters/pottery-studio-live-v3.jpg",
+    video: "assets/videos/pottery-studio-live-v4.mp4",
+    poster: "assets/posters/pottery-studio-live-v4.jpg",
     manifest: "assets/manifests/pottery-studio.json"
   },
   {
@@ -41,8 +41,8 @@ const CASES = [
     title: "Plan, revised",
     short: "Smile · explain · refocus",
     summary: "A home video call progresses from confident update to open-handed realization and a focused final plan.",
-    video: "assets/videos/video-call-live-v3.mp4",
-    poster: "assets/posters/video-call-live-v3.jpg",
+    video: "assets/videos/video-call-live-v4.mp4",
+    poster: "assets/posters/video-call-live-v4.jpg",
     manifest: "assets/manifests/video-call.json"
   }
 ];
