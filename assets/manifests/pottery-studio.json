@@ -206,13 +206,12 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/pottery-studio-live-v3.mp4",
-    "source_sha256": "0a23b4a0be03950faf6ffb19ca6f69b09d75dcd0e70297d5a433b66ca1065f10",
+    "source_video": "../videos/pottery-studio-live-en-v6.mp4",
+    "source_sha256": "625902ef091b513f72fa544dd2dc1b078790fd48733b4546d498ed53527f13a9",
     "prompt_source": "authored controls embedded in this manifest",
     "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",
     "audio_mode": "copy",
-    "web_font": "../fonts/LiveDirector-CJK-subset.ttf",
     "audience_mock": true,
     "audience_event_count": 13
   }

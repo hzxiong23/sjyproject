@@ -7,8 +7,8 @@
     <meta name="description" content="LiveDirector interactive project page: four causal, script-directed audio-video demonstrations.">
     <title>LiveDirector — Direction that stays in time</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <script src="app.js?v=5" defer></script>
+    <link rel="stylesheet" href="styles.css?v=6">
+    <script src="app.js?v=6" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#demos">Skip to demos</a>
@@ -83,8 +83,8 @@
             </div>
             <div class="director-stage">
               <div id="media-surface" class="media-surface" style="--media-aspect: 406 / 720">
-                <video id="demo-video" controls playsinline preload="none" poster="assets/posters/elderly-speaker-live-v3.jpg" aria-label="Selected LiveDirector demonstration">
-                  <source src="assets/videos/elderly-speaker-live-v3.mp4" type="video/mp4">
+                <video id="demo-video" controls playsinline preload="none" poster="assets/posters/elderly-speaker-live-en-v6.jpg" aria-label="Selected LiveDirector demonstration">
+                  <source src="assets/videos/elderly-speaker-live-en-v6.mp4" type="video/mp4">
                   Your browser does not support embedded MP4 video.
                 </video>
                 <div class="video-badge"><span>DMD</span> causal · 4 steps</div>
@@ -93,25 +93,25 @@
               <section id="prompt-console" class="prompt-console" lang="zh-CN" aria-labelledby="prompt-console-title">
                 <header class="console-head">
                   <div>
-                    <h3 id="prompt-console-title">流式模型提示</h3>
+                    <h3 id="prompt-console-title">Streaming Model Prompts</h3>
                     <p>TIMELINE / DERIVED</p>
                   </div>
                   <div class="console-time"><strong id="console-current-time">00:00.00</strong><span>/ 00:15.00</span></div>
                 </header>
 
                 <div class="anchor-card">
-                  <span>全局场景</span>
-                  <p id="anchor-text">正在载入该案例的全局提示……</p>
+                  <span>Global scene</span>
+                  <p id="anchor-text">Loading this case's global prompt…</p>
                 </div>
 
                 <div id="flow-console" class="flow-console" style="--now-position: 72%">
-                  <div class="flow-caption"><span>提示包向右流动&nbsp; →</span><b>模型 NOW</b></div>
+                  <div class="flow-caption"><span>Prompt packets flow right&nbsp; →</span><b>MODEL NOW</b></div>
                   <div id="flow-ruler" class="flow-ruler" aria-hidden="true"></div>
-                  <div id="prompt-tracks" class="prompt-tracks" aria-label="与视频精确同步的提示时间轴"></div>
+                  <div id="prompt-tracks" class="prompt-tracks" aria-label="Prompt timeline synchronized precisely with the video"></div>
                   <span class="model-playhead" aria-hidden="true"></span>
                 </div>
 
-                <footer class="console-foot"><span></span>推导时序&nbsp; 提示包向右进入模型</footer>
+                <footer class="console-foot"><span></span>DERIVED TIMING&nbsp; PROMPT PACKETS ENTER THE MODEL</footer>
               </section>
             </div>
             <div class="player-caption">
@@ -154,7 +154,7 @@
             <p class="reading-index">02</p>
             <div class="reading-icon routing-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             <h3>Follow each cue</h3>
-            <p>The right surface is native HTML. Chinese labels stay sharp, prompt text remains editable, and every packet is positioned from its authored timestamp.</p>
+            <p>The right surface is native HTML. Labels stay sharp, prompt text remains editable, and every packet is positioned from its authored timestamp.</p>
           </article>
           <article class="reading-card compare" data-reveal>
             <p class="reading-index">03</p>

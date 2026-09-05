@@ -206,13 +206,12 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/home-kitchen-live-v3.mp4",
-    "source_sha256": "45a777e6fe8ea4ce34510c1cbe188db12d62dd7b1ee8bc06df01a6e6146c7595",
+    "source_video": "../videos/home-kitchen-live-en-v6.mp4",
+    "source_sha256": "9a75a1431ce5d28a5b289e7f5323dbebde4c682fbdf7e2c3046f7873a5a4bed5",
     "prompt_source": "authored controls embedded in this manifest",
     "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",
     "audio_mode": "copy",
-    "web_font": "../fonts/LiveDirector-CJK-subset.ttf",
     "audience_mock": true,
     "audience_event_count": 13
   }

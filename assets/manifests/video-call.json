@@ -206,13 +206,12 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/video-call-live-v3.mp4",
-    "source_sha256": "a05e1f5e89a6e822a272f3def24a4450fe2508f1dee9657b9dc9e34336ec18fe",
+    "source_video": "../videos/video-call-live-en-v6.mp4",
+    "source_sha256": "d363c780b2c19c1545e9b91af1644ef5fb3bfc3f2cb972209572e7abf3972959",
     "prompt_source": "authored controls embedded in this manifest",
     "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",
     "audio_mode": "copy",
-    "web_font": "../fonts/LiveDirector-CJK-subset.ttf",
     "audience_mock": true,
     "audience_event_count": 13
   }

@@ -206,13 +206,12 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/elderly-speaker-live-v3.mp4",
-    "source_sha256": "20767792c650e50d80cbc9de831606cd15343a6252487109eb294e9b8eadcb21",
+    "source_video": "../videos/elderly-speaker-live-en-v6.mp4",
+    "source_sha256": "269b2073e0ccc58e6dc56176a3ca747ca4e248c8ab4431af5274f6026fa56b25",
     "prompt_source": "authored controls embedded in this manifest",
     "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",
     "audio_mode": "copy",
-    "web_font": "../fonts/LiveDirector-CJK-subset.ttf",
     "audience_mock": true,
     "audience_event_count": 13
   }

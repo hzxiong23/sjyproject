@@ -8,9 +8,9 @@ const CASES = [
     title: "The reveal",
     short: "Shock · emphasis · resolve",
     summary: "Surprise turns to delight as an emphatic two-hand gesture resolves into a composed close.",
-    video: "assets/videos/elderly-speaker-live-v3.mp4",
-    poster: "assets/posters/elderly-speaker-live-v3.jpg",
-    manifest: "assets/manifests/elderly-speaker.json?v=5"
+    video: "assets/videos/elderly-speaker-live-en-v6.mp4",
+    poster: "assets/posters/elderly-speaker-live-en-v6.jpg",
+    manifest: "assets/manifests/elderly-speaker.json?v=6"
   },
   {
     id: "home-kitchen",
@@ -19,9 +19,9 @@ const CASES = [
     title: "Kitchen notes",
     short: "Surprise · open palm · settle",
     summary: "A kitchen presenter moves from a held stance to an open-palm explanation, then returns to neutral.",
-    video: "assets/videos/home-kitchen-live-v3.mp4",
-    poster: "assets/posters/home-kitchen-live-v3.jpg",
-    manifest: "assets/manifests/home-kitchen.json?v=5"
+    video: "assets/videos/home-kitchen-live-en-v6.mp4",
+    poster: "assets/posters/home-kitchen-live-en-v6.jpg",
+    manifest: "assets/manifests/home-kitchen.json?v=6"
   },
   {
     id: "pottery-studio",
@@ -30,9 +30,9 @@ const CASES = [
     title: "Craft in motion",
     short: "Welcome · point · return",
     summary: "A warm studio introduction shifts into focused direction and closes with both hands grounded on the table.",
-    video: "assets/videos/pottery-studio-live-v3.mp4",
-    poster: "assets/posters/pottery-studio-live-v3.jpg",
-    manifest: "assets/manifests/pottery-studio.json?v=5"
+    video: "assets/videos/pottery-studio-live-en-v6.mp4",
+    poster: "assets/posters/pottery-studio-live-en-v6.jpg",
+    manifest: "assets/manifests/pottery-studio.json?v=6"
   },
   {
     id: "video-call",
@@ -41,24 +41,24 @@ const CASES = [
     title: "Plan, revised",
     short: "Smile · explain · refocus",
     summary: "A home video call progresses from confident update to open-handed realization and a focused final plan.",
-    video: "assets/videos/video-call-live-v3.mp4",
-    poster: "assets/posters/video-call-live-v3.jpg",
-    manifest: "assets/manifests/video-call.json?v=5"
+    video: "assets/videos/video-call-live-en-v6.mp4",
+    poster: "assets/posters/video-call-live-en-v6.jpg",
+    manifest: "assets/manifests/video-call.json?v=6"
   }
 ];
 
 const TRACKS = {
-  FACE: { label: "表情", english: "FACE", color: "var(--face)" },
-  BODY: { label: "动作", english: "BODY", color: "var(--body)" },
-  MUSIC: { label: "音乐", english: "MUSIC", color: "var(--music)" },
-  SPEECH: { label: "台词", english: "SPEECH", color: "var(--speech)" }
+  FACE: { label: "Expression", english: "FACE", color: "var(--face)" },
+  BODY: { label: "Motion", english: "BODY", color: "var(--body)" },
+  MUSIC: { label: "Music", english: "MUSIC", color: "var(--music)" },
+  SPEECH: { label: "Speech", english: "SPEECH", color: "var(--speech)" }
 };
 
 const STATE_LABELS = {
-  received: "已接收",
-  active: "生效中",
-  history: "历史",
-  evicted: "已移出"
+  received: "Received",
+  active: "Active",
+  history: "History",
+  evicted: "Evicted"
 };
 
 // Same normalized geometry as the 405 px-wide upstream compositor panel.
@@ -201,7 +201,7 @@ function seekFromRail(event, duration) {
 function renderPromptPanel(manifest) {
   const duration = manifest.duration || 15;
   promptConsole.dataset.caseId = activeCase.id;
-  anchorText.textContent = manifest.anchor_text || "全局场景提示";
+  anchorText.textContent = manifest.anchor_text || "Global scene prompt";
   flowRuler.replaceChildren();
   promptTracks.replaceChildren();
 
@@ -228,7 +228,7 @@ function renderPromptPanel(manifest) {
     const rail = document.createElement("div");
     rail.className = "prompt-rail";
     rail.dataset.track = track;
-    rail.setAttribute("aria-label", `${meta.label} ${meta.english} 提示时间轴`);
+    rail.setAttribute("aria-label", `${meta.label} ${meta.english} prompt timeline`);
     rail.addEventListener("click", (event) => seekFromRail(event, duration));
 
     for (let second = 0; second <= duration; second += 2) {
