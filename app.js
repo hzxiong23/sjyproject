@@ -3,10 +3,9 @@
 const CASES = [
   {
     id: "elderly-speaker",
-    number: "01",
+    number: "1",
     format: "Portrait source",
     title: "The reveal",
-    short: "Shock · emphasis · resolve",
     summary: "Surprise turns to delight as an emphatic two-hand gesture resolves into a composed close.",
     video: "assets/videos/elderly-speaker-live-en-v6.mp4",
     poster: "assets/posters/elderly-speaker-live-en-v6.jpg",
@@ -14,10 +13,9 @@ const CASES = [
   },
   {
     id: "home-kitchen",
-    number: "02",
+    number: "2",
     format: "Landscape source",
     title: "Kitchen notes",
-    short: "Surprise · open palm · settle",
     summary: "A kitchen presenter moves from a held stance to an open-palm explanation, then returns to neutral.",
     video: "assets/videos/home-kitchen-live-en-v6.mp4",
     poster: "assets/posters/home-kitchen-live-en-v6.jpg",
@@ -25,10 +23,9 @@ const CASES = [
   },
   {
     id: "pottery-studio",
-    number: "03",
+    number: "3",
     format: "Landscape source",
     title: "Craft in motion",
-    short: "Welcome · point · return",
     summary: "A warm studio introduction shifts into focused direction and closes with both hands grounded on the table.",
     video: "assets/videos/pottery-studio-live-en-v6.mp4",
     poster: "assets/posters/pottery-studio-live-en-v6.jpg",
@@ -36,10 +33,9 @@ const CASES = [
   },
   {
     id: "video-call",
-    number: "04",
+    number: "4",
     format: "Landscape source",
     title: "Plan, revised",
-    short: "Smile · explain · refocus",
     summary: "A home video call progresses from confident update to open-handed realization and a focused final plan.",
     video: "assets/videos/video-call-live-en-v6.mp4",
     poster: "assets/posters/video-call-live-en-v6.jpg",
@@ -122,13 +118,8 @@ function createCaseButtons() {
     button.dataset.caseId = item.id;
     button.disabled = true;
     button.setAttribute("aria-current", item.id === activeCase.id ? "true" : "false");
-    button.innerHTML = `
-      <img src="${item.poster}" alt="" loading="lazy">
-      <span>
-        <small>CASE ${item.number}</small>
-        <strong>${item.title}</strong>
-        <span>${item.short}</span>
-      </span>`;
+    button.textContent = `CASE ${item.number}`;
+    button.setAttribute("aria-label", `Select case ${item.number}`);
     button.addEventListener("click", () => selectCase(item.id));
     caseList.append(button);
   });
