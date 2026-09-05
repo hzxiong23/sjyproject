@@ -10,7 +10,7 @@ const CASES = [
     summary: "Surprise turns to delight as an emphatic two-hand gesture resolves into a composed close.",
     video: "assets/videos/elderly-speaker-live-v4.mp4",
     poster: "assets/posters/elderly-speaker-live-v4.jpg",
-    manifest: "assets/manifests/elderly-speaker.json"
+    manifest: "assets/manifests/elderly-speaker.json?v=4"
   },
   {
     id: "home-kitchen",
@@ -21,7 +21,7 @@ const CASES = [
     summary: "A kitchen presenter moves from a held stance to an open-palm explanation, then returns to neutral.",
     video: "assets/videos/home-kitchen-live-v4.mp4",
     poster: "assets/posters/home-kitchen-live-v4.jpg",
-    manifest: "assets/manifests/home-kitchen.json"
+    manifest: "assets/manifests/home-kitchen.json?v=4"
   },
   {
     id: "pottery-studio",
@@ -32,7 +32,7 @@ const CASES = [
     summary: "A warm studio introduction shifts into focused direction and closes with both hands grounded on the table.",
     video: "assets/videos/pottery-studio-live-v4.mp4",
     poster: "assets/posters/pottery-studio-live-v4.jpg",
-    manifest: "assets/manifests/pottery-studio.json"
+    manifest: "assets/manifests/pottery-studio.json?v=4"
   },
   {
     id: "video-call",
@@ -43,7 +43,7 @@ const CASES = [
     summary: "A home video call progresses from confident update to open-handed realization and a focused final plan.",
     video: "assets/videos/video-call-live-v4.mp4",
     poster: "assets/posters/video-call-live-v4.jpg",
-    manifest: "assets/manifests/video-call.json"
+    manifest: "assets/manifests/video-call.json?v=4"
   }
 ];
 
