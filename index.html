@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090b10">
+    <meta name="description" content="LiveDirector interactive project page: four causal, script-directed audio-video demonstrations.">
+    <title>LiveDirector — Direction that stays in time</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#demos">Skip to demos</a>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="LiveDirector home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Live<span>Director</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#demos">Demos</a>
+        <a href="#read">How to read</a>
+        <a href="#configuration">Configuration</a>
+      </nav>
+      <a class="nav-cta" href="#demos">Watch cases <span aria-hidden="true">↘</span></a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="signal-field" aria-hidden="true">
+          <div class="signal-label">FACE</div>
+          <div class="signal-track signal-face"><i style="--x: 2%; --w: 22%"></i><i style="--x: 36%; --w: 28%"></i><i style="--x: 70%; --w: 23%"></i></div>
+          <div class="signal-label">BODY</div>
+          <div class="signal-track signal-body"><i style="--x: 10%; --w: 31%"></i><i style="--x: 46%; --w: 29%"></i><i style="--x: 79%; --w: 19%"></i></div>
+          <div class="signal-label">VOICE</div>
+          <div class="signal-track signal-speech"><i style="--x: 0%; --w: 32%"></i><i style="--x: 34%; --w: 32%"></i><i style="--x: 68%; --w: 32%"></i></div>
+          <span class="signal-head"></span>
+        </div>
+
+        <div class="hero-inner">
+          <p class="eyebrow"><span></span> Interactive generation showcase</p>
+          <h1 id="hero-title">Direction that<br><em>stays in time.</em></h1>
+          <p class="hero-copy">
+            LiveDirector turns a timed script into a continuous performance—coordinating expression,
+            gesture, voice, and ambience as the scene unfolds.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demos"><span class="play-dot" aria-hidden="true">▶</span> Explore four demos</a>
+            <a class="button button-quiet" href="#read">Read the interface <span aria-hidden="true">↓</span></a>
+          </div>
+          <dl class="hero-facts" aria-label="Demo facts">
+            <div><dt>04</dt><dd>directed cases</dd></div>
+            <div><dt>04</dt><dd>control tracks</dd></div>
+            <div><dt>15s</dt><dd>per performance</dd></div>
+            <div><dt>24</dt><dd>frames / second</dd></div>
+          </dl>
+        </div>
+        <a class="scroll-cue" href="#demos" aria-label="Scroll to demos"><span></span> Scroll to direct</a>
+      </section>
+
+      <nav class="section-nav" aria-label="On this page">
+        <a href="#demos"><b>01</b> Directed performances</a>
+        <a href="#read"><b>02</b> How to read</a>
+        <a href="#configuration"><b>03</b> Run snapshot</a>
+      </nav>
+
+      <section class="section demo-section" id="demos" aria-labelledby="demos-title">
+        <div class="section-heading" data-reveal>
+          <p class="section-number">01 / 03</p>
+          <div>
+            <p class="kicker">Selected demonstrations</p>
+            <h2 id="demos-title">One stage. Four directions.</h2>
+          </div>
+          <p class="section-intro">Choose a scene, press play, and follow the authored cues as they cross the current-time marker.</p>
+        </div>
+
+        <div class="demo-shell" data-reveal>
+          <article class="player-card">
+            <div class="player-topline">
+              <div class="now-playing"><span></span> Now directing</div>
+              <div class="player-time"><span id="current-time">00:00.0</span><i>/</i><span>00:15.0</span></div>
+            </div>
+            <div class="video-frame">
+              <video id="demo-video" controls playsinline preload="metadata" poster="assets/posters/elderly-speaker.jpg" aria-label="Selected LiveDirector demonstration">
+                <source src="assets/videos/elderly-speaker.mp4" type="video/mp4">
+                Your browser does not support embedded MP4 video.
+              </video>
+              <div class="video-badge"><span>DMD</span> causal · 4 steps</div>
+            </div>
+            <div class="player-caption">
+              <div>
+                <p id="case-kicker">CASE 01 · PORTRAIT</p>
+                <h3 id="case-title">The reveal</h3>
+              </div>
+              <p id="case-summary">Surprise turns to delight as an emphatic two-hand gesture resolves into a composed close.</p>
+            </div>
+          </article>
+
+          <aside class="case-rail" aria-label="Choose a demonstration">
+            <div class="case-rail-head"><span>Case index</span><span>04 scenes</span></div>
+            <div id="case-list" class="case-list"></div>
+            <p class="case-note"><span aria-hidden="true">ⓘ</span> Only one video loads at a time. Audio starts after you press play.</p>
+          </aside>
+
+          <section class="timeline-panel" aria-labelledby="timeline-title">
+            <div class="timeline-head">
+              <div>
+                <p class="micro-label">Authored control timeline</p>
+                <h3 id="timeline-title">Four intentions, one clock.</h3>
+              </div>
+              <div class="timeline-legend"><span><i class="legend-authored"></i> Requested interval</span><span><i class="legend-head"></i> Current time</span></div>
+            </div>
+            <div class="time-ruler" aria-hidden="true"><span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span></div>
+            <div id="timeline" class="timeline" aria-label="Interactive cue timeline"></div>
+            <p class="timeline-disclosure">Timing shown here is derived from the authored controls in each supplied manifest; it is not an observed inference-log trace.</p>
+          </section>
+
+          <section class="cue-panel" aria-labelledby="cue-title">
+            <div class="cue-heading">
+              <p class="micro-label">At the playhead</p>
+              <h3 id="cue-title">Current direction</h3>
+            </div>
+            <div id="cue-readout" class="cue-readout" aria-live="polite"></div>
+          </section>
+        </div>
+        <div id="load-error" class="load-error" role="alert" hidden></div>
+      </section>
+
+      <section class="section read-section" id="read" aria-labelledby="read-title">
+        <div class="section-heading" data-reveal>
+          <p class="section-number">02 / 03</p>
+          <div>
+            <p class="kicker">A legible control surface</p>
+            <h2 id="read-title">See the result—and the reason.</h2>
+          </div>
+          <p class="section-intro">Every supplied video already pairs the generated performance with a compact timeline replay. The webpage adds navigation and a synchronized overview.</p>
+        </div>
+
+        <div class="reading-grid">
+          <article class="reading-card outcome" data-reveal>
+            <p class="reading-index">01</p>
+            <div class="reading-icon" aria-hidden="true"><span></span></div>
+            <h3>Watch the outcome</h3>
+            <p>The left surface preserves the generated frame and audio. Portrait and landscape source scenes are fitted without changing the 15-second performance.</p>
+          </article>
+          <article class="reading-card routing" data-reveal>
+            <p class="reading-index">02</p>
+            <div class="reading-icon routing-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <h3>Follow each cue</h3>
+            <p>The right surface separates face, body, music, and speech. The red playhead makes overlap and hand-off visible instead of hiding control inside one prompt.</p>
+          </article>
+          <article class="reading-card compare" data-reveal>
+            <p class="reading-index">03</p>
+            <div class="reading-icon compare-icon" aria-hidden="true"><b>A</b><b>B</b></div>
+            <h3>Move across scenes</h3>
+            <p>The case rail keeps the configuration fixed while changing subject, framing, and direction—useful for checking whether the same control language travels.</p>
+          </article>
+        </div>
+
+        <div class="track-strip" data-reveal aria-label="Control track meanings">
+          <div class="track-title"><span>Control vocabulary</span><strong>Four lanes remain independent</strong></div>
+          <div class="track-item face"><span>FACE</span><p>Expression and affect</p></div>
+          <div class="track-item body"><span>BODY</span><p>Gesture and posture</p></div>
+          <div class="track-item music"><span>MUSIC</span><p>Background sound</p></div>
+          <div class="track-item speech"><span>SPEECH</span><p>Spoken content</p></div>
+        </div>
+      </section>
+
+      <section class="section config-section" id="configuration" aria-labelledby="config-title">
+        <div class="section-heading" data-reveal>
+          <p class="section-number">03 / 03</p>
+          <div>
+            <p class="kicker">Frozen demo configuration</p>
+            <h2 id="config-title">A shared run snapshot.</h2>
+          </div>
+          <p class="section-intro">These labels describe the selected files. They are included for provenance, not as a cross-method performance claim.</p>
+        </div>
+
+        <div class="config-grid" data-reveal>
+          <div class="config-primary">
+            <span class="config-overline">Generation mode</span>
+            <strong>Causal</strong>
+            <p>English scripted controls · 15-second outputs</p>
+          </div>
+          <dl class="config-facts">
+            <div><dt>Training checkpoint</dt><dd>Step 700</dd></div>
+            <div><dt>Denoising schedule</dt><dd>999 · 909 · 725 · 421</dd></div>
+            <div><dt>KV cache</dt><dd>5 blocks</dd></div>
+            <div><dt>Distilled LoRA</dt><dd>0.5</dd></div>
+            <div><dt>Random seed</dt><dd>10</dd></div>
+            <div><dt>Presentation</dt><dd>834 × 720 · H.264/AAC</dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Live<span>Director</span></span></a>
+        <p>Four authored tracks. One continuous performance.</p>
+      </div>
+      <div class="footer-meta"><span>Static project-page demo</span><span>2026</span><a href="#top">Back to top ↑</a></div>
+    </footer>
+  </body>
+</html>
