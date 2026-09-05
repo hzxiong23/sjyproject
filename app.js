@@ -8,9 +8,9 @@ const CASES = [
     title: "The reveal",
     short: "Shock · emphasis · resolve",
     summary: "Surprise turns to delight as an emphatic two-hand gesture resolves into a composed close.",
-    video: "assets/videos/elderly-speaker-live-v4.mp4",
-    poster: "assets/posters/elderly-speaker-live-v4.jpg",
-    manifest: "assets/manifests/elderly-speaker.json?v=4"
+    video: "assets/videos/elderly-speaker-live-v3.mp4",
+    poster: "assets/posters/elderly-speaker-live-v3.jpg",
+    manifest: "assets/manifests/elderly-speaker.json?v=5"
   },
   {
     id: "home-kitchen",
@@ -19,9 +19,9 @@ const CASES = [
     title: "Kitchen notes",
     short: "Surprise · open palm · settle",
     summary: "A kitchen presenter moves from a held stance to an open-palm explanation, then returns to neutral.",
-    video: "assets/videos/home-kitchen-live-v4.mp4",
-    poster: "assets/posters/home-kitchen-live-v4.jpg",
-    manifest: "assets/manifests/home-kitchen.json?v=4"
+    video: "assets/videos/home-kitchen-live-v3.mp4",
+    poster: "assets/posters/home-kitchen-live-v3.jpg",
+    manifest: "assets/manifests/home-kitchen.json?v=5"
   },
   {
     id: "pottery-studio",
@@ -30,9 +30,9 @@ const CASES = [
     title: "Craft in motion",
     short: "Welcome · point · return",
     summary: "A warm studio introduction shifts into focused direction and closes with both hands grounded on the table.",
-    video: "assets/videos/pottery-studio-live-v4.mp4",
-    poster: "assets/posters/pottery-studio-live-v4.jpg",
-    manifest: "assets/manifests/pottery-studio.json?v=4"
+    video: "assets/videos/pottery-studio-live-v3.mp4",
+    poster: "assets/posters/pottery-studio-live-v3.jpg",
+    manifest: "assets/manifests/pottery-studio.json?v=5"
   },
   {
     id: "video-call",
@@ -41,9 +41,9 @@ const CASES = [
     title: "Plan, revised",
     short: "Smile · explain · refocus",
     summary: "A home video call progresses from confident update to open-handed realization and a focused final plan.",
-    video: "assets/videos/video-call-live-v4.mp4",
-    poster: "assets/posters/video-call-live-v4.jpg",
-    manifest: "assets/manifests/video-call.json?v=4"
+    video: "assets/videos/video-call-live-v3.mp4",
+    poster: "assets/posters/video-call-live-v3.jpg",
+    manifest: "assets/manifests/video-call.json?v=5"
   }
 ];
 
@@ -65,6 +65,8 @@ const STATE_LABELS = {
 // NOW is 72% across the usable 377 px lane; one second spans 52 px.
 const NOW_POSITION = 0.72;
 const SECOND_SPAN = 52 / 377;
+const MIN_PACKET_SPAN = 78 / 377;
+const ADMISSION_SLIDE = 12 / 377;
 
 const video = document.querySelector("#demo-video");
 const mediaSurface = document.querySelector("#media-surface");
@@ -155,6 +157,30 @@ function eventState(event, time) {
   return { name: "history", opacity: admissionOpacity };
 }
 
+// Port of assign_sublanes() from the presentation renderer. Touching
+// intervals share a slot; only intervals with a real time overlap split.
+function assignSublanes(events) {
+  const ordered = [...events].sort((a, b) => (
+    (a.start - b.start) || (a.end - b.end) || a.id.localeCompare(b.id)
+  ));
+  const endings = [];
+  const slots = new Map();
+
+  ordered.forEach((event) => {
+    let slot = endings.findIndex((end) => end <= event.start);
+    if (slot === -1) {
+      slot = endings.length;
+      endings.push(event.end);
+    } else {
+      endings[slot] = event.end;
+    }
+    slots.set(event.id, slot);
+  });
+
+  const count = Math.max(1, endings.length);
+  return new Map([...slots].map(([eventId, slot]) => [eventId, { slot, count }]));
+}
+
 function createTimeMarker(second, className) {
   const marker = document.createElement("span");
   marker.className = className;
@@ -184,6 +210,8 @@ function renderPromptPanel(manifest) {
   }
 
   Object.entries(TRACKS).forEach(([track, meta]) => {
+    const trackEvents = manifest.events.filter((item) => item.track === track);
+    const sublanes = assignSublanes(trackEvents);
     const section = document.createElement("section");
     section.className = "prompt-track";
     section.style.setProperty("--track-color", meta.color);
@@ -207,12 +235,13 @@ function renderPromptPanel(manifest) {
       rail.append(createTimeMarker(second, "rail-grid-line"));
     }
 
-    manifest.events.filter((item) => item.track === track).forEach((item) => {
+    trackEvents.forEach((item) => {
       const packet = document.createElement("button");
       packet.type = "button";
       packet.className = "prompt-packet";
       packet.dataset.eventId = item.id;
       packet.eventData = item;
+      packet.sublaneData = sublanes.get(item.id) || { slot: 0, count: 1 };
 
       const packetMeta = document.createElement("span");
       packetMeta.className = "packet-meta";
@@ -248,19 +277,41 @@ function updatePackets(time) {
   promptTracks.querySelectorAll(".prompt-packet").forEach((packet) => {
     const event = packet.eventData;
     const state = eventState(event, time);
-    const leading = NOW_POSITION + ((time - event.start) * SECOND_SPAN);
-    const trailing = NOW_POSITION + ((time - event.end) * SECOND_SPAN);
-    const isVisible = state.name && leading >= 0 && trailing <= 1;
+    packet.style.setProperty("--event-opacity", state.opacity);
+    let leading = NOW_POSITION + ((time - event.start) * SECOND_SPAN);
+    let trailing = NOW_POSITION + ((time - event.end) * SECOND_SPAN);
+    if ((leading - trailing) < MIN_PACKET_SPAN) trailing = leading - MIN_PACKET_SPAN;
+
+    const admission = Number.isFinite(event.admitted_at) ? event.admitted_at : event.start;
+    const admissionProgress = admission <= 0 ? 1 : easeOutCubic((time - admission) / 0.28);
+    const slide = ADMISSION_SLIDE * (1 - admissionProgress);
+    leading -= slide;
+    trailing -= slide;
+
+    const isVisible = state.name && state.opacity > 0 && leading >= 0 && trailing <= 1;
     packet.hidden = !isVisible;
     if (!isVisible) return;
 
     packet.style.left = `${trailing * 100}%`;
     packet.style.width = `${(leading - trailing) * 100}%`;
+    const { slot, count } = packet.sublaneData;
+    const railHeight = packet.parentElement.clientHeight;
+    const outerPad = 4;
+    const innerGap = 3;
+    const availableHeight = Math.max(0, railHeight - (outerPad * 2));
+    const cardHeight = Math.max(24, Math.floor((availableHeight - (innerGap * (count - 1))) / count));
+    const top = outerPad + (slot * (cardHeight + innerGap));
+    const bottom = Math.min(railHeight - outerPad, top + cardHeight);
+    if ((bottom - top) < 20) {
+      packet.hidden = true;
+      return;
+    }
+    packet.style.top = `${top}px`;
+    packet.style.height = `${Math.max(0, bottom - top)}px`;
     packet.classList.toggle("is-received", state.name === "received");
     packet.classList.toggle("is-active", state.name === "active");
     packet.classList.toggle("is-history", state.name === "history");
     packet.classList.toggle("is-evicted", state.name === "evicted");
-    packet.style.setProperty("--eviction-opacity", state.opacity);
     packet.dataset.state = state.name;
 
     const packetMeta = packet.querySelector(".packet-meta");

@@ -85,7 +85,7 @@
       "clause_index": 5,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 3.0,
+      "admitted_at": 4.0,
       "evicted_at": 14.6,
       "lifecycle_source": "authored",
       "original_track": null
@@ -100,7 +100,7 @@
       "clause_index": 6,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 3.0,
+      "admitted_at": 4.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -115,7 +115,7 @@
       "clause_index": 7,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 3.0,
+      "admitted_at": 4.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -130,7 +130,7 @@
       "clause_index": 8,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 3.0,
+      "admitted_at": 4.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -145,7 +145,7 @@
       "clause_index": 9,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 8.0,
+      "admitted_at": 9.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -160,7 +160,7 @@
       "clause_index": 10,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 8.0,
+      "admitted_at": 9.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -175,7 +175,7 @@
       "clause_index": 11,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 8.0,
+      "admitted_at": 9.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -190,7 +190,7 @@
       "clause_index": 12,
       "kind": "prompt",
       "is_gap": false,
-      "admitted_at": 8.0,
+      "admitted_at": 9.0,
       "evicted_at": 15.0,
       "lifecycle_source": "authored",
       "original_track": null
@@ -206,8 +206,8 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/home-kitchen-live-v4.mp4",
-    "source_sha256": "da6ecbc8578a11c01d4dcbf0e9e05226fcaf229f75f9f4b2c1732517cf714029",
+    "source_video": "../videos/home-kitchen-live-v3.mp4",
+    "source_sha256": "45a777e6fe8ea4ce34510c1cbe188db12d62dd7b1ee8bc06df01a6e6146c7595",
     "prompt_source": "authored controls embedded in this manifest",
     "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",

@@ -219,12 +219,13 @@ button { color: inherit; }
 .prompt-track-head span { color: #9ba3ae; font: 7px var(--mono); line-height: 17px; }
 .prompt-rail { position: relative; min-height: 0; overflow: hidden; border: 1px solid #2e343d; border-radius: 7px; background: rgba(255,255,255,.018); cursor: crosshair; }
 .rail-grid-line { position: absolute; z-index: 0; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.07); pointer-events: none; }
-.prompt-packet { position: absolute; z-index: 2; top: 4px; bottom: 4px; min-width: 2px; overflow: hidden; padding: 5px 7px; border: 1px solid color-mix(in srgb, var(--track-color) 55%, #313740); border-radius: 7px; color: #eef0f3; text-align: left; background: color-mix(in srgb, #1b1f25 88%, var(--track-color)); cursor: pointer; opacity: .78; transition: background 100ms linear, border-color 100ms linear, opacity 100ms linear; }
+.prompt-packet { position: absolute; z-index: 2; top: 4px; min-width: 2px; overflow: hidden; padding: 5px 7px; border: 1px solid color-mix(in srgb, var(--track-color) 55%, #313740); border-radius: 7px; color: #eef0f3; text-align: left; background: color-mix(in srgb, #1b1f25 88%, var(--track-color)); cursor: pointer; opacity: calc(.816 * var(--event-opacity, 1)); transition: background 100ms linear, border-color 100ms linear, opacity 100ms linear; }
+.prompt-packet::after { position: absolute; top: 0; right: 0; bottom: 0; width: 4px; border-radius: 2px; background: var(--track-color); content: ""; }
 .prompt-packet:hover, .prompt-packet:focus-visible { z-index: 4; outline: 1px solid var(--track-color); outline-offset: -2px; }
-.prompt-packet.is-received { border-color: color-mix(in srgb, var(--track-color) 40%, #313740); opacity: .82; }
-.prompt-packet.is-active { border-color: var(--track-color); background: color-mix(in srgb, #1b1f25 72%, var(--track-color)); opacity: 1; box-shadow: 0 0 12px color-mix(in srgb, var(--track-color) 18%, transparent); }
-.prompt-packet.is-history { opacity: .55; }
-.prompt-packet.is-evicted { opacity: var(--eviction-opacity, 0); }
+.prompt-packet.is-received { border-color: color-mix(in srgb, var(--track-color) 40%, #313740); }
+.prompt-packet.is-active { border-color: var(--track-color); background: color-mix(in srgb, #1b1f25 72%, var(--track-color)); opacity: calc(.933 * var(--event-opacity, 1)); box-shadow: 0 0 12px color-mix(in srgb, var(--track-color) 18%, transparent); }
+.prompt-packet.is-history { opacity: calc(.816 * var(--event-opacity, 1)); }
+.prompt-packet.is-evicted { opacity: calc(.816 * var(--event-opacity, 0)); }
 .packet-meta { display: block; overflow: hidden; color: var(--track-color); font-size: 8px; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
 .packet-copy { display: -webkit-box; overflow: hidden; margin-top: 3px; color: #edf0f3; font-size: clamp(8px, .92vw, 10px); line-height: 1.28; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
 .model-playhead { position: absolute; z-index: 5; top: 31px; bottom: 0; left: var(--now-position); width: 2px; background: #e24e49; box-shadow: 0 0 8px rgba(226,78,73,.35); transform: translateX(-1px); pointer-events: none; }

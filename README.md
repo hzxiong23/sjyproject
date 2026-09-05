@@ -20,7 +20,7 @@ bash scripts/check_site.sh
 
 Copy this directory to the root of a GitHub Pages repository, or to that repository's configured Pages source directory. The site is fully relative-path based; `.nojekyll` keeps the assets unchanged.
 
-The four MP4 files are 406×720 live-room presentations encoded as H.264/AAC with a two-second GOP and the `moov` atom at the front. Each file is 0.93–1.10 MB. The player uses `preload="none"`, so opening the page loads a poster instead of downloading video before the visitor presses play.
+The four MP4 files are 406×720 audience-only exports from the original compositor's default quality path, encoded as H.264/AAC with a two-second GOP and the `moov` atom at the front. Each file is 1.17–3.05 MB. The player uses `preload="none"`, so opening the page loads a poster instead of downloading video before the visitor presses play.
 
 ## Contents
 
