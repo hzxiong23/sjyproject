@@ -81,12 +81,38 @@
               <div class="now-playing"><span></span> Now directing</div>
               <div class="player-time"><span id="current-time">00:00.0</span><i>/</i><span>00:15.0</span></div>
             </div>
-            <div class="video-frame">
-              <video id="demo-video" controls playsinline preload="metadata" poster="assets/posters/elderly-speaker.jpg" aria-label="Selected LiveDirector demonstration">
-                <source src="assets/videos/elderly-speaker.mp4" type="video/mp4">
-                Your browser does not support embedded MP4 video.
-              </video>
-              <div class="video-badge"><span>DMD</span> causal · 4 steps</div>
+            <div class="director-stage">
+              <div id="media-surface" class="media-surface" style="--media-aspect: 832 / 1472">
+                <video id="demo-video" controls playsinline preload="metadata" poster="assets/posters/elderly-speaker-source.jpg" aria-label="Selected LiveDirector demonstration">
+                  <source src="assets/videos/elderly-speaker-source.mp4" type="video/mp4">
+                  Your browser does not support embedded MP4 video.
+                </video>
+                <div class="video-badge"><span>DMD</span> causal · 4 steps</div>
+              </div>
+
+              <section id="prompt-console" class="prompt-console" lang="zh-CN" aria-labelledby="prompt-console-title">
+                <header class="console-head">
+                  <div>
+                    <h3 id="prompt-console-title">流式模型提示</h3>
+                    <p>TIMELINE / DERIVED</p>
+                  </div>
+                  <div class="console-time"><strong id="console-current-time">00:00.00</strong><span>/ 00:15.00</span></div>
+                </header>
+
+                <div class="anchor-card">
+                  <span>全局场景</span>
+                  <p id="anchor-text">正在载入该案例的全局提示……</p>
+                </div>
+
+                <div id="flow-console" class="flow-console" style="--now-position: 72%">
+                  <div class="flow-caption"><span>提示包向右流动&nbsp; →</span><b>模型 NOW</b></div>
+                  <div id="flow-ruler" class="flow-ruler" aria-hidden="true"></div>
+                  <div id="prompt-tracks" class="prompt-tracks" aria-label="与视频精确同步的提示时间轴"></div>
+                  <span class="model-playhead" aria-hidden="true"></span>
+                </div>
+
+                <footer class="console-foot"><span></span>推导时序&nbsp; 提示包向右进入模型</footer>
+              </section>
             </div>
             <div class="player-caption">
               <div>
@@ -103,26 +129,6 @@
             <p class="case-note"><span aria-hidden="true">ⓘ</span> Only one video loads at a time. Audio starts after you press play.</p>
           </aside>
 
-          <section class="timeline-panel" aria-labelledby="timeline-title">
-            <div class="timeline-head">
-              <div>
-                <p class="micro-label">Authored control timeline</p>
-                <h3 id="timeline-title">Four intentions, one clock.</h3>
-              </div>
-              <div class="timeline-legend"><span><i class="legend-authored"></i> Requested interval</span><span><i class="legend-head"></i> Current time</span></div>
-            </div>
-            <div class="time-ruler" aria-hidden="true"><span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span></div>
-            <div id="timeline" class="timeline" aria-label="Interactive cue timeline"></div>
-            <p class="timeline-disclosure">Timing shown here is derived from the authored controls in each supplied manifest; it is not an observed inference-log trace.</p>
-          </section>
-
-          <section class="cue-panel" aria-labelledby="cue-title">
-            <div class="cue-heading">
-              <p class="micro-label">At the playhead</p>
-              <h3 id="cue-title">Current direction</h3>
-            </div>
-            <div id="cue-readout" class="cue-readout" aria-live="polite"></div>
-          </section>
         </div>
         <div id="load-error" class="load-error" role="alert" hidden></div>
       </section>
@@ -134,7 +140,7 @@
             <p class="kicker">A legible control surface</p>
             <h2 id="read-title">See the result—and the reason.</h2>
           </div>
-          <p class="section-intro">Every supplied video already pairs the generated performance with a compact timeline replay. The webpage adds navigation and a synchronized overview.</p>
+          <p class="section-intro">The generated video remains untouched. Its synchronized control surface is rendered as editable, resolution-independent HTML beside it.</p>
         </div>
 
         <div class="reading-grid">
@@ -142,19 +148,19 @@
             <p class="reading-index">01</p>
             <div class="reading-icon" aria-hidden="true"><span></span></div>
             <h3>Watch the outcome</h3>
-            <p>The left surface preserves the generated frame and audio. Portrait and landscape source scenes are fitted without changing the 15-second performance.</p>
+            <p>The left surface plays the original generated frames and audio—not a screen recording or a composited presentation render.</p>
           </article>
           <article class="reading-card routing" data-reveal>
             <p class="reading-index">02</p>
             <div class="reading-icon routing-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
             <h3>Follow each cue</h3>
-            <p>The right surface separates face, body, music, and speech. The red playhead makes overlap and hand-off visible instead of hiding control inside one prompt.</p>
+            <p>The right surface is native HTML. Chinese labels stay sharp, prompt text remains editable, and every packet is positioned from its authored timestamp.</p>
           </article>
           <article class="reading-card compare" data-reveal>
             <p class="reading-index">03</p>
             <div class="reading-icon compare-icon" aria-hidden="true"><b>A</b><b>B</b></div>
             <h3>Move across scenes</h3>
-            <p>The case rail keeps the configuration fixed while changing subject, framing, and direction—useful for checking whether the same control language travels.</p>
+            <p>Each case loads its own manifest. The interval schedule is shared by design, while the anchor and all twelve directions change with the selected scene.</p>
           </article>
         </div>
 
@@ -189,7 +195,7 @@
             <div><dt>KV cache</dt><dd>5 blocks</dd></div>
             <div><dt>Distilled LoRA</dt><dd>0.5</dd></div>
             <div><dt>Random seed</dt><dd>10</dd></div>
-            <div><dt>Presentation</dt><dd>834 × 720 · H.264/AAC</dd></div>
+            <div><dt>Presentation</dt><dd>Native source · H.264/AAC</dd></div>
           </dl>
         </div>
       </section>

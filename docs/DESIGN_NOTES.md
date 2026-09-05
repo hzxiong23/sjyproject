@@ -15,11 +15,13 @@ LiveDirector uses a warmer coral identity and the four colors already present in
 - MUSIC: violet;
 - SPEECH: green.
 
-## Why one player
+## Why one player and a DOM panel
 
-All four supplied MP4 files are 15.041667-second, 834×720 H.264/AAC composites. A single player with a visual case rail avoids downloading and decoding four videos simultaneously, makes comparison deliberate, and performs better on mobile GitHub Pages visits.
+All four selected outputs are 15.041667-second H.264/AAC videos at their native generated resolutions. A single player with a visual case rail avoids downloading and decoding four videos simultaneously, makes comparison deliberate, and performs better on mobile GitHub Pages visits.
 
-The webpage timeline is generated from the matching manifests and stays synchronized with `video.currentTime`. Clicking a segment seeks to its authored start. The current-cue cards expose full text that is truncated inside the compact video compositor.
+The earlier 834×720 composites baked the video, Chinese interface labels, prompt cards, and timeline into one raster image. This revision uses the native generated video on the left and reconstructs the entire prompt console as HTML/CSS on the right. Chinese text uses the bundled Droid Sans Fallback webfont, so labels remain selectable, editable, and resolution-independent.
+
+The webpage console is generated from the selected case's own manifest. The red `模型 NOW` line stays at 72% of the usable lane width, matching the upstream compositor. Cards and ruler ticks use the same normalized scale as that renderer: one second equals `52 / 377` of the lane width. `requestVideoFrameCallback` supplies the presented frame's media time when the browser supports it; `video.currentTime` is the fallback.
 
 ## Evidence boundary
 
@@ -34,17 +36,18 @@ All four manifests state `event_source: "derived"`. The webpage therefore labels
 | Craft in motion | female half-body, pottery studio | 1024×704 |
 | Plan, revised | woman, home video call gesture | 1248×704 |
 
-## Known source limitation
+## Shared timing versus per-case content
 
-The supplied composite videos were rendered with DejaVu Sans while their chrome contains Chinese strings, so some interface glyphs inside the MP4 appear as boxes. The static webpage uses English UI and does not alter or conceal the selected videos. Fixing those baked-in glyphs requires re-rendering the composites from their raw source videos with a CJK-capable font; it cannot be corrected with webpage CSS.
+The four authored control files intentionally share the same twelve interval boundaries. Their anchor descriptions and all per-track prompt text are different. The webpage therefore preserves the common schedule rather than inventing different timings, while changing every visible prompt when a case is selected.
 
 ## Validation
 
 - All four H.264/AAC files pass strict FFmpeg decoding and have a front-loaded `moov` atom.
-- All four sanitized manifests contain 12 authored cues over FACE, BODY, MUSIC, and SPEECH, with no internal filesystem paths.
+- All four sanitized manifests contain 12 authored cues over FACE, BODY, MUSIC, and SPEECH, with distinct case content and no internal filesystem paths.
 - Chromium desktop validation used a 1440×1000 viewport; mobile validation used 390×844 with no page-level horizontal overflow.
-- The browser loaded four case selectors, four timeline rows, and twelve segments; switching cases changed the video source and cue text.
-- All four selected MP4 files advanced under real Chromium playback and reached `readyState = 4`.
-- Seeking to 7.5 seconds activated all four expected tracks, and clicking a cue segment sought the video to its authored start.
+- The browser loaded the bundled CJK webfont and rendered Chinese DOM labels without missing glyphs.
+- Switching cases changed the native video dimensions, global anchor, and per-track prompt content.
+- At 7.5 seconds, the NOW line measured 72% across the lane and all four active packets crossed that coordinate.
+- During real playback, the frame-synchronized panel remained within 90 ms of `video.currentTime`.
 - With JavaScript disabled, the mobile layout remains visible and has no page-level horizontal overflow.
 - No console errors, page errors, or unexpected failed requests were observed.
