@@ -1,0 +1,116 @@
+{
+  "mock": true,
+  "host": {
+    "name": "小知的直播间",
+    "viewer_count": "1.2万"
+  },
+  "events": [
+    {
+      "id": "feed_001",
+      "type": "feed",
+      "at": 0.8,
+      "duration": 3.3,
+      "author": "南风慢慢",
+      "text": "来了，前排"
+    },
+    {
+      "id": "danmu_001",
+      "type": "danmu",
+      "at": 1.4,
+      "duration": 3.2,
+      "author": "星河留声",
+      "text": "今天状态很好",
+      "lane": 0
+    },
+    {
+      "id": "feed_002",
+      "type": "feed",
+      "at": 2.5,
+      "duration": 3.4,
+      "author": "像素面包",
+      "text": "这个表情很自然"
+    },
+    {
+      "id": "local_001",
+      "type": "local_send",
+      "typing_start": 3.1,
+      "at": 3.8,
+      "duration": 3.5,
+      "author": "我",
+      "text": "声音和画面对上了"
+    },
+    {
+      "id": "feed_003",
+      "type": "feed",
+      "at": 4.8,
+      "duration": 3.3,
+      "author": "海盐电台",
+      "text": "动作变化看到了"
+    },
+    {
+      "id": "danmu_002",
+      "type": "danmu",
+      "at": 6.2,
+      "duration": 3.0,
+      "author": "小满同学",
+      "text": "时间点切得很准",
+      "lane": 1
+    },
+    {
+      "id": "feed_004",
+      "type": "feed",
+      "at": 7.3,
+      "duration": 3.3,
+      "author": "云朵存档",
+      "text": "动作和台词同步了"
+    },
+    {
+      "id": "reaction_001",
+      "type": "reaction",
+      "at": 8.3,
+      "duration": 1.8,
+      "count": 6
+    },
+    {
+      "id": "danmu_003",
+      "type": "danmu",
+      "at": 8.7,
+      "duration": 3.0,
+      "author": "薄荷汽水",
+      "text": "情绪真的变明显了",
+      "lane": 0
+    },
+    {
+      "id": "feed_005",
+      "type": "feed",
+      "at": 10.5,
+      "duration": 3.1,
+      "author": "微光收件箱",
+      "text": "这个过渡很顺"
+    },
+    {
+      "id": "danmu_004",
+      "type": "danmu",
+      "at": 12.0,
+      "duration": 2.7,
+      "author": "晚风频道",
+      "text": "人物一直很稳定",
+      "lane": 1
+    },
+    {
+      "id": "feed_006",
+      "type": "feed",
+      "at": 13.5,
+      "duration": 1.5,
+      "author": "纸飞机",
+      "text": "收尾啦"
+    },
+    {
+      "id": "reaction_002",
+      "type": "reaction",
+      "at": 13.8,
+      "duration": 1.2,
+      "count": 7
+    }
+  ]
+}

@@ -197,8 +197,8 @@
     }
   ],
   "media": {
-    "width": 1024,
-    "height": 704,
+    "width": 406,
+    "height": 720,
     "fps": 24.0,
     "frame_count": 361,
     "duration": 15.041667,
@@ -206,14 +206,14 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/home-kitchen-source.mp4",
-    "source_sha256": "c7f8d12ac7a23a2f899464e8f9f78c2a59bdad57bdd264e5b2f757a87ad9f3b3",
+    "source_video": "../videos/home-kitchen-live-v3.mp4",
+    "source_sha256": "45a777e6fe8ea4ce34510c1cbe188db12d62dd7b1ee8bc06df01a6e6146c7595",
     "prompt_source": "authored controls embedded in this manifest",
-    "render_mode": "source_video_plus_dom",
+    "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",
     "audio_mode": "copy",
-    "web_font": "../fonts/DroidSansFallbackFull.ttf",
+    "web_font": "../fonts/LiveDirector-CJK-subset.ttf",
     "audience_mock": true,
-    "audience_event_count": 11
+    "audience_event_count": 13
   }
 }

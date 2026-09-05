@@ -17,9 +17,11 @@ LiveDirector uses a warmer coral identity and the four colors already present in
 
 ## Why one player and a DOM panel
 
-All four selected outputs are 15.041667-second H.264/AAC videos at their native generated resolutions. A single player with a visual case rail avoids downloading and decoding four videos simultaneously, makes comparison deliberate, and performs better on mobile GitHub Pages visits.
+All four selected outputs are 15.041667-second, 406×720 H.264/AAC videos. They preserve the original demo's live-room presentation on the media side: host identity, live/viewer state, follow action, moving danmu, comments, reactions, and the composer are rasterized with the generated frames. A single player with a visual case rail avoids downloading and decoding four videos simultaneously.
 
-The earlier 834×720 composites baked the video, Chinese interface labels, prompt cards, and timeline into one raster image. This revision uses the native generated video on the left and reconstructs the entire prompt console as HTML/CSS on the right. Chinese text uses the bundled Droid Sans Fallback webfont, so labels remain selectable, editable, and resolution-independent.
+The earlier 834×720 composites also baked the prompt cards and timeline into the video. This revision limits rasterized UI to the live-room HUD on the left and keeps the entire prompt console as HTML/CSS on the right. Chinese DOM text uses a 62 KB subset WenQuanYi webfont, so labels remain selectable, editable, resolution-independent, and much faster to load than the previous 3.9 MB font.
+
+The MP4s use a two-second GOP and front-loaded `moov` atoms. They total about 7.0 MB instead of 26.4 MB, and the largest case is 3.05 MB instead of 17.3 MB. `preload="none"` prevents the browser from consuming that media bandwidth before a visitor chooses to play.
 
 The webpage console is generated from the selected case's own manifest. The red `模型 NOW` line stays at 72% of the usable lane width, matching the upstream compositor. Cards and ruler ticks use the same normalized scale as that renderer: one second equals `52 / 377` of the lane width. `requestVideoFrameCallback` supplies the presented frame's media time when the browser supports it; `video.currentTime` is the fallback.
 
@@ -42,11 +44,11 @@ The four authored control files intentionally share the same twelve interval bou
 
 ## Validation
 
-- All four H.264/AAC files pass strict FFmpeg decoding and have a front-loaded `moov` atom.
+- All four H.264/AAC files pass strict FFmpeg decoding, use a common 406×720 live-room layout, have two-second keyframe spacing, and have a front-loaded `moov` atom.
 - All four sanitized manifests contain 12 authored cues over FACE, BODY, MUSIC, and SPEECH, with distinct case content and no internal filesystem paths.
 - Chromium desktop validation used a 1440×1000 viewport; mobile validation used 390×844 with no page-level horizontal overflow.
 - The browser loaded the bundled CJK webfont and rendered Chinese DOM labels without missing glyphs.
-- Switching cases changed the native video dimensions, global anchor, and per-track prompt content.
+- Switching cases changed the live-room video, global anchor, and per-track prompt content without changing the DOM prompt console.
 - At 7.5 seconds, the NOW line measured 72% across the lane and all four active packets crossed that coordinate.
 - During real playback, the frame-synchronized panel remained within 90 ms of `video.currentTime`.
 - With JavaScript disabled, the mobile layout remains visible and has no page-level horizontal overflow.

@@ -20,7 +20,7 @@ bash scripts/check_site.sh
 
 Copy this directory to the root of a GitHub Pages repository, or to that repository's configured Pages source directory. The site is fully relative-path based; `.nojekyll` keeps the assets unchanged.
 
-The four MP4 files are the native generated outputs, losslessly remuxed as H.264/AAC with the `moov` atom at the front for browser streaming. Each file is under 18 MB.
+The four MP4 files are 406×720 live-room presentations encoded as H.264/AAC with a two-second GOP and the `moov` atom at the front. Each file is 1.0–3.1 MB. The player uses `preload="none"`, so opening the page loads a poster instead of downloading video before the visitor presses play.
 
 ## Contents
 
@@ -28,10 +28,11 @@ The four MP4 files are the native generated outputs, losslessly remuxed as H.264
 index.html               page structure and content
 styles.css               responsive visual system
 app.js                   case switching and synchronized timeline
-assets/videos/           four native generated videos (no baked-in panel)
+assets/videos/           four compact live-room videos (audience HUD only)
 assets/posters/          poster frames extracted at 7.5 seconds
 assets/manifests/        sanitized authored-cue metadata
-assets/fonts/            bundled CJK webfont and license
+assets/audience/         mock live-room interaction fixture
+assets/fonts/            62 KB subset CJK webfont and license
 scripts/check_site.sh    static and media validation
 scripts/serve_site.py    dependency-free local server with MP4 Range support
 docs/DESIGN_NOTES.md     design rationale and source mapping

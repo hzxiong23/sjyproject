@@ -197,8 +197,8 @@
     }
   ],
   "media": {
-    "width": 832,
-    "height": 1472,
+    "width": 406,
+    "height": 720,
     "fps": 24.0,
     "frame_count": 361,
     "duration": 15.041667,
@@ -206,14 +206,14 @@
     "audio_codec": "aac",
     "audio_sample_rate": 48000,
     "audio_channels": 2,
-    "source_video": "../videos/elderly-speaker-source.mp4",
-    "source_sha256": "cd6cc366f617218cdca28e89ba9ac8a85d818b4c0fca3ad326d49077c169e0b5",
+    "source_video": "../videos/elderly-speaker-live-v3.mp4",
+    "source_sha256": "20767792c650e50d80cbc9de831606cd15343a6252487109eb294e9b8eadcb21",
     "prompt_source": "authored controls embedded in this manifest",
-    "render_mode": "source_video_plus_dom",
+    "render_mode": "audience_overlay_plus_dom",
     "panel_flow": "web_horizontal",
     "audio_mode": "copy",
-    "web_font": "../fonts/DroidSansFallbackFull.ttf",
+    "web_font": "../fonts/LiveDirector-CJK-subset.ttf",
     "audience_mock": true,
-    "audience_event_count": 11
+    "audience_event_count": 13
   }
 }
