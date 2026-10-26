@@ -4,24 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090b10">
-    <meta name="description" content="LiveDirector interactive project page: four causal, script-directed audio-video demonstrations.">
-    <title>LiveDirector — Direction that stays in time</title>
+    <meta name="description" content="TempoTrack: temporally grounded multi-track control for streaming joint audio-video generation.">
+    <title>TempoTrack — Temporally Grounded Multi-Track Control</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=7">
-    <script src="app.js?v=7" defer></script>
+    <link rel="stylesheet" href="styles.css?v=8">
+    <script src="app.js?v=8" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#demos">Skip to demos</a>
+    <a class="skip-link" href="#overview">Skip to content</a>
 
     <header class="site-header" id="top">
-      <a class="brand" href="#top" aria-label="LiveDirector home">
+      <a class="brand" href="#top" aria-label="TempoTrack home">
         <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>Live<span>Director</span></span>
+        <span>Tempo<span>Track</span></span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#demos">Demos</a>
-        <a href="#read">How to read</a>
-        <a href="#configuration">Configuration</a>
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#demos">Demo</a>
+        <a href="#results">Results</a>
       </nav>
       <a class="nav-cta" href="#demos">Watch cases <span aria-hidden="true">↘</span></a>
     </header>
@@ -33,85 +34,187 @@
           <div class="signal-track signal-face"><i style="--x: 2%; --w: 22%"></i><i style="--x: 36%; --w: 28%"></i><i style="--x: 70%; --w: 23%"></i></div>
           <div class="signal-label">BODY</div>
           <div class="signal-track signal-body"><i style="--x: 10%; --w: 31%"></i><i style="--x: 46%; --w: 29%"></i><i style="--x: 79%; --w: 19%"></i></div>
-          <div class="signal-label">VOICE</div>
+          <div class="signal-label">MUSIC</div>
+          <div class="signal-track signal-music"><i style="--x: 0%; --w: 31%"></i><i style="--x: 34%; --w: 30%"></i><i style="--x: 68%; --w: 30%"></i></div>
+          <div class="signal-label">SPEECH</div>
           <div class="signal-track signal-speech"><i style="--x: 0%; --w: 32%"></i><i style="--x: 34%; --w: 32%"></i><i style="--x: 68%; --w: 32%"></i></div>
           <span class="signal-head"></span>
         </div>
 
         <div class="hero-inner">
-          <p class="eyebrow"><span></span> Interactive generation showcase</p>
-          <h1 id="hero-title">Direction that<br><em>stays in time.</em></h1>
+          <p class="eyebrow"><span></span> Streaming joint audio-video generation</p>
+          <h1 id="hero-title">Tempo<em>Track</em></h1>
+          <p class="hero-deck">Temporally Grounded Multi-Track Control for Streaming Joint Audio-Video Generation</p>
           <p class="hero-copy">
-            LiveDirector turns a timed script into a continuous performance—coordinating expression,
-            gesture, voice, and ambience as the scene unfolds.
+            Direct a continuous audiovisual stream with independently timed, overlapping events—and introduce
+            new instructions while generation is already in progress.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#demos"><span class="play-dot" aria-hidden="true">▶</span> Explore four demos</a>
-            <a class="button button-quiet" href="#read">Read the interface <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#method">See how it works <span aria-hidden="true">↓</span></a>
           </div>
-          <dl class="hero-facts" aria-label="Demo facts">
-            <div><dt>04</dt><dd>directed cases</dd></div>
+          <dl class="hero-facts" aria-label="Project highlights">
             <div><dt>04</dt><dd>control tracks</dd></div>
-            <div><dt>15s</dt><dd>per performance</dd></div>
-            <div><dt>24</dt><dd>frames / second</dd></div>
+            <div><dt>HCR</dt><dd>temporal routing</dd></div>
+            <div><dt>56</dt><dd>MTBench cases</dd></div>
+            <div><dt>15.367</dt><dd>end-to-end FPS</dd></div>
           </dl>
         </div>
-        <a class="scroll-cue" href="#demos" aria-label="Scroll to demos"><span></span> Scroll to direct</a>
+        <a class="scroll-cue" href="#overview" aria-label="Scroll to project overview"><span></span> Scroll to explore</a>
       </section>
 
       <nav class="section-nav" aria-label="On this page">
-        <a href="#demos"><b>01</b> Directed performances</a>
-        <a href="#read"><b>02</b> How to read</a>
-        <a href="#configuration"><b>03</b> Run snapshot</a>
+        <a href="#overview"><b>01</b> Overview</a>
+        <a href="#method"><b>02</b> Method</a>
+        <a href="#demos"><b>03</b> Demo</a>
+        <a href="#results"><b>04</b> Results</a>
       </nav>
+
+      <section class="section overview-section" id="overview" aria-labelledby="overview-title">
+        <div class="section-heading" data-reveal>
+          <p class="section-number">01 / 04</p>
+          <div>
+            <p class="kicker">Why TempoTrack</p>
+            <h2 id="overview-title">Schedule the event—not just the segment.</h2>
+          </div>
+          <p class="section-intro">Global prompts describe an entire sequence. Segment-level switching replaces that description wholesale. Neither naturally expresses events that arrive online, overlap, and follow their own clocks.</p>
+        </div>
+
+        <div class="abstract-panel" data-reveal>
+          <p class="abstract-label">Abstract</p>
+          <p class="abstract-copy">
+            TempoTrack is a framework for online, temporally grounded multi-track control in streaming joint
+            audio-video generation. It maps structured event instructions to blockwise causal generation, while
+            preserving identity, motion continuity, and audiovisual synchronization across the stream.
+          </p>
+        </div>
+
+        <div class="motivation-grid">
+          <article class="motivation-card" data-reveal>
+            <span class="motivation-index">01</span>
+            <h3>Independent intervals</h3>
+            <p>Face, body, music, and speech instructions each carry their own target interval. Events can start asynchronously and overlap without collapsing into one global prompt.</p>
+          </article>
+          <article class="motivation-card" data-reveal>
+            <span class="motivation-index">02</span>
+            <h3>Online updates</h3>
+            <p>New instructions can arrive after generation starts. They enter at the next block boundary, affect only ungenerated content, and leave completed output untouched.</p>
+          </article>
+          <article class="motivation-card" data-reveal>
+            <span class="motivation-index">03</span>
+            <h3>One audiovisual stream</h3>
+            <p>Audio and video are generated jointly on a shared physical timeline, so timed speech, lip motion, expression, gesture, and background sound remain coordinated.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section method-section" id="method" aria-labelledby="method-title">
+        <div class="section-heading" data-reveal>
+          <p class="section-number">02 / 04</p>
+          <div>
+            <p class="kicker">Hierarchical Context Routing</p>
+            <h2 id="method-title">Route context at two temporal scales.</h2>
+          </div>
+          <p class="section-intro">HCR bridges event-level instructions and blockwise generation: coarse admission selects the right instructions for each causal window; fine routing aligns their influence inside the block.</p>
+        </div>
+
+        <div class="routing-figure" data-reveal aria-label="Hierarchical Context Routing overview">
+          <div class="routing-input">
+            <p class="routing-overline">Timed multi-track input</p>
+            <div class="routing-timeline">
+              <span class="routing-axis"></span>
+              <div class="routing-lane face"><b>FACE</b><i style="--left: 4%; --width: 34%">smile</i><i style="--left: 57%; --width: 30%">surprised</i></div>
+              <div class="routing-lane body"><b>BODY</b><i style="--left: 20%; --width: 39%">raise hand</i></div>
+              <div class="routing-lane music"><b>MUSIC</b><i style="--left: 2%; --width: 90%">soft piano</i></div>
+              <div class="routing-lane speech"><b>SPEECH</b><i style="--left: 38%; --width: 47%">“Welcome…”</i></div>
+            </div>
+          </div>
+          <div class="routing-arrow" aria-hidden="true"><span>HCR</span>→</div>
+          <div class="routing-output">
+            <div class="route-step">
+              <span>01 · COARSE</span>
+              <h3>Block-level admission</h3>
+              <p>An online prompt queue admits newly received clauses and retains only events relevant to the current causal window.</p>
+            </div>
+            <div class="route-step">
+              <span>02 · FINE</span>
+              <h3>Temporal Attention Bias</h3>
+              <p>A timestamp-dependent Gaussian bias aligns instruction intervals with audio and video query positions on a shared physical timeline.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card" data-reveal>
+            <p class="method-stage">Stage 1</p>
+            <h3>Bidirectional HCR learning</h3>
+            <p>Full-sequence audio-video training teaches high-quality generation and temporally grounded control. The pretrained backbone remains frozen while LoRA adapters learn the task.</p>
+          </article>
+          <article class="method-card" data-reveal>
+            <p class="method-stage">Stage 2</p>
+            <h3>Causal adaptation</h3>
+            <p>Block-causal masking and teacher forcing adapt the model for streaming inference, conditioning each noisy block on preceding clean ground-truth blocks.</p>
+          </article>
+          <article class="method-card" data-reveal>
+            <p class="method-stage">Stage 3</p>
+            <h3>Self-forcing DMD</h3>
+            <p>A pretrained distillation LoRA supplies few-step initialization. An additional DMD LoRA is optimized on self-generated histories while the causal and distillation components stay frozen.</p>
+          </article>
+        </div>
+
+        <div class="inference-strip" data-reveal>
+          <span>Streaming inference</span>
+          <p><strong>Sliding-window context</strong> bounds history length, while a retained first-block attention sink and RoPE repositioning support identity consistency and audiovisual coordination over time.</p>
+        </div>
+      </section>
 
       <section class="section demo-section" id="demos" aria-labelledby="demos-title">
         <div class="section-heading" data-reveal>
-          <p class="section-number">01 / 03</p>
+          <p class="section-number">03 / 04</p>
           <div>
-            <p class="kicker">Selected demonstrations</p>
-            <h2 id="demos-title">One stage. Four directions.</h2>
+            <p class="kicker">Qualitative demonstrations</p>
+            <h2 id="demos-title">Four timelines, directed online.</h2>
           </div>
-          <p class="section-intro">Choose a scene, press play, and follow the authored cues as they cross the current-time marker.</p>
+          <p class="section-intro">Choose a scene, press play, and follow the face, body, music, and speech instructions as they reach the current generation time.</p>
         </div>
 
         <div class="demo-shell" data-reveal>
           <article class="player-card">
             <div class="player-topline">
-              <div class="now-playing"><span></span> Now directing</div>
+              <div class="now-playing"><span></span> Now generating</div>
               <div class="player-time"><span id="current-time">00:00.0</span><i>/</i><span>00:15.0</span></div>
             </div>
             <div class="director-stage">
               <div id="media-surface" class="media-surface" style="--media-aspect: 406 / 720">
-                <video id="demo-video" controls playsinline preload="none" poster="assets/posters/elderly-speaker-live-en-v6.jpg" aria-label="Selected LiveDirector demonstration">
+                <video id="demo-video" controls playsinline preload="none" poster="assets/posters/elderly-speaker-live-en-v6.jpg" aria-label="Selected TempoTrack demonstration">
                   <source src="assets/videos/elderly-speaker-live-en-v6.mp4" type="video/mp4">
                   Your browser does not support embedded MP4 video.
                 </video>
-                <div class="video-badge"><span>DMD</span> causal · 4 steps</div>
+                <div class="video-badge"><span>TempoTrack</span> causal · few-step</div>
               </div>
 
-              <section id="prompt-console" class="prompt-console" lang="zh-CN" aria-labelledby="prompt-console-title">
+              <section id="prompt-console" class="prompt-console" lang="en" aria-labelledby="prompt-console-title">
                 <header class="console-head">
                   <div>
                     <h3 id="prompt-console-title">Streaming Model Prompts</h3>
-                    <p>TIMELINE / DERIVED</p>
+                    <p>AUTHORED EVENTS / DERIVED LIFECYCLE</p>
                   </div>
                   <div class="console-time"><strong id="console-current-time">00:00.00</strong><span>/ 00:15.00</span></div>
                 </header>
 
                 <div class="anchor-card">
-                  <span>Global scene</span>
+                  <span>Persistent identity · scene</span>
                   <p id="anchor-text">Loading this case's global prompt…</p>
                 </div>
 
                 <div id="flow-console" class="flow-console" style="--now-position: 72%">
-                  <div class="flow-caption"><span>Prompt packets flow right&nbsp; →</span><b>MODEL NOW</b></div>
+                  <div class="flow-caption"><span>Timed instructions&nbsp; →</span><b>MODEL NOW</b></div>
                   <div id="flow-ruler" class="flow-ruler" aria-hidden="true"></div>
                   <div id="prompt-tracks" class="prompt-tracks" aria-label="Prompt timeline synchronized precisely with the video"></div>
                   <span class="model-playhead" aria-hidden="true"></span>
                 </div>
 
-                <footer class="console-foot"><span></span>DERIVED TIMING&nbsp; PROMPT PACKETS ENTER THE MODEL</footer>
+                <footer class="console-foot"><span></span>INSTRUCTIONS ENTER AT BLOCK BOUNDARIES</footer>
               </section>
             </div>
             <div class="player-caption">
@@ -127,85 +230,66 @@
             <div class="case-rail-head"><span>Case index</span></div>
             <div id="case-list" class="case-list"></div>
           </aside>
-
         </div>
         <div id="load-error" class="load-error" role="alert" hidden></div>
-      </section>
 
-      <section class="section read-section" id="read" aria-labelledby="read-title">
-        <div class="section-heading" data-reveal>
-          <p class="section-number">02 / 03</p>
-          <div>
-            <p class="kicker">A legible control surface</p>
-            <h2 id="read-title">See the result—and the reason.</h2>
-          </div>
-          <p class="section-intro">The generated scene remains unobscured. Its synchronized control surface is rendered as editable, resolution-independent HTML beside it.</p>
-        </div>
-
-        <div class="reading-grid">
-          <article class="reading-card outcome" data-reveal>
-            <p class="reading-index">01</p>
-            <div class="reading-icon" aria-hidden="true"><span></span></div>
-            <h3>Watch the outcome</h3>
-            <p>The left surface plays the original generated frames and audio—not a screen recording or a composited presentation render.</p>
-          </article>
-          <article class="reading-card routing" data-reveal>
-            <p class="reading-index">02</p>
-            <div class="reading-icon routing-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-            <h3>Follow each cue</h3>
-            <p>The right surface is native HTML. Labels stay sharp, prompt text remains editable, and every packet is positioned from its authored timestamp.</p>
-          </article>
-          <article class="reading-card compare" data-reveal>
-            <p class="reading-index">03</p>
-            <div class="reading-icon compare-icon" aria-hidden="true"><b>A</b><b>B</b></div>
-            <h3>Move across scenes</h3>
-            <p>Each case loads its own manifest. The interval schedule is shared by design, while the anchor and all twelve directions change with the selected scene.</p>
-          </article>
-        </div>
-
-        <div class="track-strip" data-reveal aria-label="Control track meanings">
-          <div class="track-title"><span>Control vocabulary</span><strong>Four lanes remain independent</strong></div>
-          <div class="track-item face"><span>FACE</span><p>Expression and affect</p></div>
-          <div class="track-item body"><span>BODY</span><p>Gesture and posture</p></div>
-          <div class="track-item music"><span>MUSIC</span><p>Background sound</p></div>
-          <div class="track-item speech"><span>SPEECH</span><p>Spoken content</p></div>
+        <div class="demo-legend" data-reveal>
+          <div><span class="legend-dot face"></span><strong>FACE</strong><p>Expression and affect</p></div>
+          <div><span class="legend-dot body"></span><strong>BODY</strong><p>Gesture and posture</p></div>
+          <div><span class="legend-dot music"></span><strong>MUSIC</strong><p>Background sound</p></div>
+          <div><span class="legend-dot speech"></span><strong>SPEECH</strong><p>Spoken content</p></div>
         </div>
       </section>
 
-      <section class="section config-section" id="configuration" aria-labelledby="config-title">
+      <section class="section results-section" id="results" aria-labelledby="results-title">
         <div class="section-heading" data-reveal>
-          <p class="section-number">03 / 03</p>
+          <p class="section-number">04 / 04</p>
           <div>
-            <p class="kicker">Frozen demo configuration</p>
-            <h2 id="config-title">A shared run snapshot.</h2>
+            <p class="kicker">MTBench evaluation</p>
+            <h2 id="results-title">Control, continuity, and speed.</h2>
           </div>
-          <p class="section-intro">These labels describe the selected files. They are included for provenance, not as a cross-method performance claim.</p>
+          <p class="section-intro">MTBench contains 56 diverse cases with explicit multi-track intervals. TempoTrack is evaluated for instruction adherence, temporal alignment, audiovisual quality, identity preservation, and streaming throughput.</p>
         </div>
 
-        <div class="config-grid" data-reveal>
-          <div class="config-primary">
-            <span class="config-overline">Generation mode</span>
-            <strong>Causal</strong>
-            <p>English scripted controls · 15-second outputs</p>
+        <div class="result-grid" data-reveal>
+          <article class="result-card primary">
+            <span>End-to-end throughput</span>
+            <strong>15.367<small> FPS</small></strong>
+            <p>Highest among the reported configurations, measured from request submission through prompt processing, generation, decoding, and MP4 encoding.</p>
+          </article>
+          <article class="result-card">
+            <span>Identity consistency · DINO-S</span>
+            <strong>0.9442</strong>
+            <p>Highest reported score in the main comparison.</p>
+          </article>
+          <article class="result-card">
+            <span>Audiovisual sync · Sync-C</span>
+            <strong>6.3495</strong>
+            <p>Highest Sync-C together with the lowest Sync-D of 8.4674.</p>
+          </article>
+          <article class="result-card">
+            <span>Timed speech accuracy</span>
+            <strong>0.9973</strong>
+            <p>Highest reported speech accuracy on MTBench.</p>
+          </article>
+        </div>
+
+        <div class="result-summary" data-reveal>
+          <div>
+            <span class="result-overline">Multi-track control</span>
+            <h3>Strong gains without claiming uniform superiority.</h3>
           </div>
-          <dl class="config-facts">
-            <div><dt>Training checkpoint</dt><dd>Step 700</dd></div>
-            <div><dt>Denoising schedule</dt><dd>999 · 909 · 725 · 421</dd></div>
-            <div><dt>KV cache</dt><dd>5 blocks</dd></div>
-            <div><dt>Distilled LoRA</dt><dd>0.5</dd></div>
-            <div><dt>Random seed</dt><dd>10</dd></div>
-            <div><dt>Presentation</dt><dd>Native source · H.264/AAC</dd></div>
-          </dl>
+          <p>TempoTrack records the highest Body Event score (0.7174) and Speech Accuracy (0.9973), while its Face Success score (0.9250) ranks second. The result is a balanced system that combines temporal controllability with strong identity preservation and audiovisual synchronization.</p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div>
-        <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Live<span>Director</span></span></a>
-        <p>Four authored tracks. One continuous performance.</p>
+        <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Tempo<span>Track</span></span></a>
+        <p>Independent event tracks. One shared physical timeline.</p>
       </div>
-      <div class="footer-meta"><span>Static project-page demo</span><span>2026</span><a href="#top">Back to top ↑</a></div>
+      <div class="footer-meta"><span>Project page</span><span>2026</span><a href="#top">Back to top ↑</a></div>
     </footer>
   </body>
 </html>

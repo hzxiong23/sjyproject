@@ -6,9 +6,9 @@ Replace the earlier single rendered-video handoff with a GitHub Pages-style inte
 
 ## Reference interpretation
 
-The Temporal Context Routing project page was used as an information-architecture reference: a dark editorial hero, restrained technical color, sticky in-page navigation, numbered sections, large playable examples, and a time-aligned explanation of authored controls. This implementation does not copy its title, text, figures, JavaScript, or CSS.
+The UniSwap project page was used as an information-architecture reference: a concise paper title and summary, motivation before method, an explicit technical walkthrough, playable examples, and evidence-backed results. TempoTrack keeps its existing dark editorial visual system and does not copy UniSwap's title, text, figures, JavaScript, or CSS.
 
-LiveDirector uses a warmer coral identity and the four colors already present in the supplied demo compositor:
+TempoTrack uses a warm coral identity and the four colors already present in the supplied demo compositor:
 
 - FACE: amber;
 - BODY: cyan;
@@ -27,7 +27,7 @@ The webpage console is generated from the selected case's own manifest. The mani
 
 ## Evidence boundary
 
-All four manifests state `event_source: "derived"` because the available generation logs contain no compatible `[TC-window]` lifecycle records. Authored admissions still come directly from the exact controls; evictions use the renderer's five-second derived history rule. The webpage therefore labels the timeline as authored/derived and does not describe it as a measured runtime trace. Configuration labels are parsed from the frozen file provenance supplied for this task; the page makes no comparative quality or speed claim.
+All four manifests state `event_source: "derived"` because the available generation logs contain no compatible `[TC-window]` lifecycle records. Authored admissions still come directly from the exact controls; evictions use the renderer's five-second derived history rule. The webpage therefore labels the timeline as authored events with a derived lifecycle and does not describe it as a measured runtime trace. Project claims and reported metrics are restricted to those in the September 26, 2026 TempoTrack manuscript; the four-case player is presented as a qualitative demonstration rather than a benchmark comparison.
 
 ## Selected cases
 

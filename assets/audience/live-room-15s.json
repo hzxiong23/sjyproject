@@ -1,7 +1,7 @@
 {
   "mock": true,
   "host": {
-    "name": "LiveDirector Studio",
+    "name": "TempoTrack Studio",
     "viewer_count": "12K"
   },
   "events": [

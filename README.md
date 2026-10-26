@@ -1,6 +1,6 @@
-# LiveDirector GitHub Pages demo
+# TempoTrack project page
 
-Standalone static project page for four selected LiveDirector demonstrations. It uses plain HTML, CSS, and JavaScript with no build step and no third-party runtime dependency.
+Standalone static project page for **TempoTrack: Temporally Grounded Multi-Track Control for Streaming Joint Audio-Video Generation**. The page presents the problem, Hierarchical Context Routing method, four synchronized demonstrations, and headline MTBench results. It uses plain HTML, CSS, and JavaScript with no build step or third-party runtime dependency.
 
 ## Local preview
 
@@ -20,7 +20,7 @@ bash scripts/check_site.sh
 
 Copy this directory to the root of a GitHub Pages repository, or to that repository's configured Pages source directory. The site is fully relative-path based; `.nojekyll` keeps the assets unchanged.
 
-The four MP4 files are English-only 406×720 audience exports from the original compositor's default CRF 18 quality path, encoded as H.264/AAC with a two-second GOP and the `moov` atom at the front. Each file is 1.96–5.13 MB. The player uses `preload="none"`, so opening the page loads a poster instead of downloading video before the visitor presses play.
+The four MP4 files are English-only 406×720 audience exports from the original compositor's default CRF 18 quality path, encoded as H.264/AAC with a two-second GOP and the `moov` atom at the front. Each file is 1.96–5.13 MB. The player uses `preload="none"`, so opening the page loads a poster instead of downloading video before the visitor presses play. Project descriptions and reported metrics follow the September 26, 2026 TempoTrack manuscript.
 
 ## Contents
 

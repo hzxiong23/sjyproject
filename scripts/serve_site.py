@@ -110,7 +110,7 @@ def main() -> None:
     root = args.directory.resolve()
     handler = partial(RangeRequestHandler, directory=str(root))
     server = PreviewServer((args.bind, args.port), handler)
-    print(f"LiveDirector project page: http://{args.bind}:{args.port}", flush=True)
+    print(f"TempoTrack project page: http://{args.bind}:{args.port}", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
