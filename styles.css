@@ -142,10 +142,10 @@ button { color: inherit; }
   background: rgba(255,255,255,.025);
   font-size: 13px;
   font-weight: 650;
-  cursor: not-allowed;
-  opacity: .78;
-  pointer-events: none;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
 }
+.publication-link:hover { color: var(--ink); border-color: #474d59; background: rgba(255,255,255,.055); }
+.publication-link.is-placeholder { cursor: not-allowed; opacity: .6; pointer-events: none; }
 .publication-link svg { width: 18px; height: 18px; fill: currentColor; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .publication-links + .hero-actions { margin-top: 14px; }
