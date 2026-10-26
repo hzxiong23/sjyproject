@@ -7,7 +7,7 @@
     <meta name="description" content="TempoTrack: temporally grounded multi-track control for streaming joint audio-video generation.">
     <title>TempoTrack — Temporally Grounded Multi-Track Control</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="stylesheet" href="styles.css?v=11">
     <script src="app.js?v=8" defer></script>
   </head>
   <body>
@@ -77,11 +77,9 @@
           </div>
         </div>
 
-        <div class="abstract-panel" data-reveal>
-          <div class="abstract-copy">
-            <p>Interactive joint audio-video generation requires users to schedule independently timed events and introduce new instructions as generation proceeds. Existing global conditioning and segment-level prompt switching offer limited support for dynamically arriving controls with asynchronous, overlapping intervals.</p>
-            <p>TempoTrack maps structured event instructions to blockwise causal generation through Hierarchical Context Routing, and combines causal adaptation with few-step self-forcing distribution matching. The resulting framework supports online multi-track control while preserving identity and audiovisual synchronization.</p>
-          </div>
+        <div class="section-copy" data-reveal>
+          <p>Interactive joint audio-video generation requires users to schedule independently timed events and introduce new instructions as generation proceeds. Existing global conditioning and segment-level prompt switching offer limited support for dynamically arriving controls with asynchronous, overlapping intervals.</p>
+          <p>TempoTrack maps structured event instructions to blockwise causal generation through Hierarchical Context Routing, and combines causal adaptation with few-step self-forcing distribution matching. The resulting framework supports online multi-track control while preserving identity and audiovisual synchronization.</p>
         </div>
 
         <div class="subsection-heading" data-reveal>
@@ -224,12 +222,6 @@
         </div>
         <div id="load-error" class="load-error" role="alert" hidden></div>
 
-        <div class="demo-legend" data-reveal>
-          <div><span class="legend-dot face"></span><strong>FACE</strong><p>Expression and affect</p></div>
-          <div><span class="legend-dot body"></span><strong>BODY</strong><p>Gesture and posture</p></div>
-          <div><span class="legend-dot music"></span><strong>MUSIC</strong><p>Background sound</p></div>
-          <div><span class="legend-dot speech"></span><strong>SPEECH</strong><p>Spoken content</p></div>
-        </div>
       </section>
 
       <section class="section results-section" id="results" aria-labelledby="results-title">
