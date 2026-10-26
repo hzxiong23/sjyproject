@@ -129,7 +129,26 @@ button { color: inherit; }
 }
 .hero-copy { max-width: 630px; margin: 38px 0 0; color: #c4c5c8; font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; }
 .hero-deck + .hero-copy { margin-top: 18px; }
+.publication-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.publication-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #d6d7da;
+  background: rgba(255,255,255,.025);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: not-allowed;
+  opacity: .78;
+  pointer-events: none;
+}
+.publication-link svg { width: 18px; height: 18px; fill: currentColor; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.publication-links + .hero-actions { margin-top: 14px; }
 .button {
   display: inline-flex;
   align-items: center;
