@@ -169,23 +169,18 @@ button { color: inherit; }
 .signal-head::before { content: "LIVE"; position: absolute; top: -1px; left: -17px; padding: 3px 6px; color: white; border-radius: 10px; background: var(--accent); font: 8px var(--mono); }
 @keyframes hero-playhead { 0%, 100% { left: 23%; } 50% { left: 82%; } }
 
-.section-nav { position: sticky; z-index: 8; top: 0; display: flex; justify-content: center; gap: clamp(22px, 5vw, 72px); min-height: 56px; padding: 0 24px; border-bottom: 1px solid var(--line); background: rgba(9,11,16,0.9); backdrop-filter: blur(18px); }
-.section-nav a { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; letter-spacing: 0; }
-.section-nav b { color: var(--accent); font-family: var(--mono); font-weight: 500; }
-.section-nav a:hover { color: var(--ink); }
-
 .section { width: var(--wrap); margin: 0 auto; padding: 72px 0; scroll-margin-top: 54px; }
 .section + .section { border-top: 1px solid var(--line-soft); }
-.section-heading { display: block; width: 100%; margin-bottom: 28px; text-align: center; }
+.section-heading { display: block; width: 100%; margin-bottom: 28px; text-align: left; }
 .section-number { align-self: start; margin: 5px 0 0; color: var(--faint); font: 10px var(--mono); letter-spacing: .08em; }
 .section-heading .kicker { margin-bottom: 12px; color: var(--accent); }
 .section h2, .subsection-heading h3 { margin: 0; font-family: var(--serif); font-size: clamp(36px, 4vw, 52px); font-weight: 400; line-height: 1.05; letter-spacing: -.035em; }
-.section-intro { width: 100%; margin: 16px 0 0; color: var(--muted); font-size: 16px; line-height: 1.72; text-align: center; }
+.section-intro { width: 100%; margin: 16px 0 0; color: var(--muted); font-size: 16px; line-height: 1.72; text-align: left; }
 
-.section-copy { width: 100%; color: var(--muted); font-size: 16px; line-height: 1.72; text-align: center; }
+.section-copy { width: 100%; color: var(--muted); font-size: 16px; line-height: 1.72; text-align: left; }
 .section-copy p { margin: 0; }
 .section-copy p + p { margin-top: 12px; }
-.subsection-heading { display: block; width: 100%; margin: 48px 0 24px; text-align: center; }
+.subsection-heading { display: block; width: 100%; margin: 48px 0 24px; text-align: left; }
 .subsection-heading p { width: 100%; margin: 12px 0 0; color: var(--muted); font-size: 16px; line-height: 1.72; }
 .motivation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
 .motivation-card {
@@ -434,8 +429,6 @@ button { color: inherit; }
   .hero-facts div:nth-child(3) { padding-left: 0; border-left: 0; }
   .scroll-cue { display: none; }
   .signal-field { top: 310px; right: -40vw; width: 130vw; opacity: .19; }
-  .section-nav { justify-content: flex-start; overflow-x: auto; }
-  .section-nav a { white-space: nowrap; }
   .section { padding: 72px 0; }
   .section-heading { display: block; }
   .section-number { margin-bottom: 18px; }
