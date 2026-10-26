@@ -7,7 +7,7 @@
     <meta name="description" content="TempoTrack: temporally grounded multi-track control for streaming joint audio-video generation.">
     <title>TempoTrack — Temporally Grounded Multi-Track Control</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=9">
+    <link rel="stylesheet" href="styles.css?v=10">
     <script src="app.js?v=8" defer></script>
   </head>
   <body>
@@ -90,16 +90,16 @@
         </div>
         <div class="motivation-grid">
           <article class="motivation-card" data-reveal>
-            <h3>Independent intervals</h3>
-            <p>Face, body, music, and speech instructions each carry their own target interval. Events can start asynchronously and overlap without collapsing into one global prompt.</p>
+            <h3>Structured multi-track inputs</h3>
+            <p>TempoTrack separates persistent identity and scene conditions from time-localized face, body, music, and speech instructions, each with an independent target interval.</p>
           </article>
           <article class="motivation-card" data-reveal>
-            <h3>Online updates</h3>
-            <p>New instructions can arrive after generation starts. They enter at the next block boundary, affect only ungenerated content, and leave completed output untouched.</p>
+            <h3>Online prompt admission</h3>
+            <p>An online prompt queue selects the instructions relevant to each causal window and admits newly received controls at the next block boundary.</p>
           </article>
           <article class="motivation-card" data-reveal>
-            <h3>One audiovisual stream</h3>
-            <p>Audio and video are generated jointly on a shared physical timeline, so timed speech, lip motion, expression, gesture, and background sound remain coordinated.</p>
+            <h3>Shared physical timeline</h3>
+            <p>Temporal Attention Bias aligns instruction intervals with audio and video query positions, supporting overlapping events while maintaining audiovisual coordination.</p>
           </article>
         </div>
       </section>
@@ -167,7 +167,6 @@
           <div>
             <h2 id="demos-title">Qualitative Demonstrations</h2>
           </div>
-          <p class="section-intro">Choose a scene, press play, and follow the face, body, music, and speech instructions as they reach the current generation time.</p>
         </div>
 
         <div class="demo-shell" data-reveal>
@@ -236,39 +235,28 @@
       <section class="section results-section" id="results" aria-labelledby="results-title">
         <div class="section-heading" data-reveal>
           <div>
-            <h2 id="results-title">Results</h2>
+            <h2 id="results-title">Quantitative Results</h2>
           </div>
-          <p class="section-intro">MTBench contains 56 diverse cases with explicit multi-track intervals. TempoTrack is evaluated for instruction adherence, temporal alignment, audiovisual quality, identity preservation, and streaming throughput.</p>
+          <p class="section-intro">On the 56-case MTBench, TempoTrack achieves strong multi-track controllability, identity consistency, audiovisual synchronization, and end-to-end streaming throughput.</p>
         </div>
 
         <div class="result-grid" data-reveal>
           <article class="result-card primary">
             <span>End-to-end throughput</span>
             <strong>15.367 FPS</strong>
-            <p>Highest among the reported configurations, measured from request submission through prompt processing, generation, decoding, and MP4 encoding.</p>
           </article>
           <article class="result-card">
             <span>Identity consistency · DINO-S</span>
             <strong>0.9442</strong>
-            <p>Highest reported score in the main comparison.</p>
           </article>
           <article class="result-card">
             <span>Audiovisual sync · Sync-C</span>
             <strong>6.3495</strong>
-            <p>Highest Sync-C together with the lowest Sync-D of 8.4674.</p>
           </article>
           <article class="result-card">
             <span>Timed speech accuracy</span>
             <strong>0.9973</strong>
-            <p>Highest reported speech accuracy on MTBench.</p>
           </article>
-        </div>
-
-        <div class="result-summary" data-reveal>
-          <div>
-            <h3>Multi-track controllability</h3>
-          </div>
-          <p>TempoTrack records the highest Body Event score (0.7174) and Speech Accuracy (0.9973), while its Face Success score (0.9250) ranks second. The result is a balanced system that combines temporal controllability with strong identity preservation and audiovisual synchronization.</p>
         </div>
       </section>
     </main>
